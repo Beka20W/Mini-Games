@@ -67,28 +67,6 @@ function startTicTacToe() {
     }
 }
 
-// ==== Игра "Битва с монстром" ====
-function startMonsterBattle() {
-    let hero = { name: "Герой", health: 100, attack: 20 };
-    let monster = { name: "Монстр", health: 80, attack: 15 };
-
-    while (hero.health > 0 && monster.health > 0) {
-        let choice = prompt("Выберите действие:\n1 - Атаковать\n2 - Пропустить ход");
-
-        if (choice === "1") {
-            monster.health -= hero.attack;
-            alert(`Вы атаковали монстра! У него осталось ${monster.health} HP.`);
-        }
-
-        if (monster.health > 0) {
-            hero.health -= monster.attack;
-            alert(`Монстр атаковал вас! У вас осталось ${hero.health} HP.`);
-        }
-    }
-
-    alert(hero.health > 0 ? "Вы победили монстра!" : "Монстр вас одолел...");
-}
-
 // ==== Игра "Генератор историй" ====
 function startStoryGenerator() {
     let heroes = ["смелый рыцарь", "хитрый вор", "волшебник", "отважный пират"];
