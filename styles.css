@@ -30,4 +30,7 @@ canvas {
     display: none;
     margin: auto;
     background: black;
+    width: 800px;
+    height: 450px;
+    border: 2px solid white;
 }
