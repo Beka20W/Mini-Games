@@ -1,55 +1,74 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <conio.h>  // Для обработки клавиши Esc
-
-void playGuessGame() {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    int secretNumber = std::rand() % 10 + 1;  // Теперь числа от 1 до 10
-    int guess;
-    int attempts = 0;
-
-    std::cout << "=== Игра 'Угадай число' ===\n";
-    std::cout << "Программа загадала число от 1 до 10.\n";
-    std::cout << "Нажмите Esc для выхода.\n";
+// ==== Игра "Угадай число" ====
+function startGuessGame() {
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
+    let attempts = 0;
+    let guess;
 
     while (true) {
-        if (_kbhit() && _getch() == 27) {  // 27 - код Esc
-            std::cout << "\nВыход из игры.\n";
-            return;
-        }
+        guess = prompt("Введите число от 1 до 10:");
 
-        std::cout << "Введите число: ";
-        std::cin >> guess;
-
-        if (std::cin.fail()) {
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout << "Ошибка ввода! Введите число.\n";
+        if (!guess || isNaN(guess)) {
+            alert("Введите корректное число!");
             continue;
         }
 
         attempts++;
 
         if (guess < secretNumber) {
-            std::cout << "Загаданное число больше!\n";
+            alert("Загаданное число больше!");
         } else if (guess > secretNumber) {
-            std::cout << "Загаданное число меньше!\n";
+            alert("Загаданное число меньше!");
         } else {
-            std::cout << "Поздравляем! Вы угадали число за " << attempts << " попыток!\n";
+            alert(`Поздравляем! Вы угадали число за ${attempts} попыток!`);
             break;
         }
     }
 }
 
-int main() {
-    char playAgain;
-    do {
-        playGuessGame();
-        std::cout << "\nХотите сыграть ещё раз? (y/n): ";
-        std::cin >> playAgain;
-    } while (playAgain == 'y' || playAgain == 'Y');
+// ==== Игра "Крестики-нолики" ====
+function startTicTacToe() {
+    alert("Крестики-нолики пока в разработке!");
+}
 
-    std::cout << "Спасибо за игру!\n";
-    return 0;
+// ==== Игра "Битва с монстром" ====
+function startMonsterBattle() {
+    alert("Битва с монстром пока в разработке!");
+}
+
+// ==== Игра Arkanoid (Canvas) ====
+function startArkanoid() {
+    let canvas = document.getElementById("gameCanvas");
+    canvas.width = 800;
+    canvas.height = 450;
+    canvas.style.display = "block";
+    let ctx = canvas.getContext("2d");
+
+    let ball = { x: 400, y: 225, dx: 4, dy: 3, radius: 10 };
+    let paddle = { x: 50, y: 200, width: 15, height: 100 };
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "white";
+        ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+    }
+
+    function update() {
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+        paddle.y = event.clientY - paddle.height / 2;
+
+        if (ball.y <= ball.radius || ball.y >= canvas.height - ball.radius) {
+            ball.dy *= -1;
+        }
+        if (ball.x >= canvas.width - ball.radius || ball.x <= ball.radius) {
+            ball.dx *= -1;
+        }
+        draw();
+    }
+
+    setInterval(update, 16);
 }
