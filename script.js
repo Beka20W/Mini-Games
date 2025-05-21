@@ -56,7 +56,7 @@ function startArkanoid() {
         ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
     }
 
-    function update() {
+    function update(event) {
         ball.x += ball.dx;
         ball.y += ball.dy;
         paddle.y = event.clientY - paddle.height / 2;
