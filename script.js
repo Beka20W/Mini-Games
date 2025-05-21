@@ -1,10 +1,10 @@
 function playGuessGame() {
-    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
     let attempts = 0;
     let guess;
 
     while (true) {
-        guess = prompt("Введите число от 1 до 100:");
+        guess = prompt("Введите число от 1 до 10:");
         if (!guess || isNaN(guess)) {
             alert("Введите корректное число!");
             continue;
