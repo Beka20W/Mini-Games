@@ -12,21 +12,22 @@ header {
     padding: 20px;
 }
 
-.game {
-    background: white;
-    margin: 20px;
-    padding: 20px;
-    display: inline-block;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 button {
     background-color: #0078D7;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 15px;
+    margin: 10px;
     cursor: pointer;
+    font-size: 16px;
 }
+
 button:hover {
     background-color: #005A9E;
+}
+
+canvas {
+    display: none;
+    margin: auto;
+    background: black;
 }
